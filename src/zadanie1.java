@@ -2,8 +2,8 @@ import static java.lang.Math.max;
 
 public class zadanie1 {
     public static void main(String[] args) {
-        Ulamek ul1 = new Ulamek(8,10);
-        Ulamek ul2 = new Ulamek(4,15);
+        Ulamek ul1 = new Ulamek(-8,10);
+        Ulamek ul2 = new Ulamek(-4,15);
         int licznik = skor(dzielenie(ul1,ul2)).getLicznik();
         int mianownik = skor(dzielenie(ul1,ul2)).getMianownik();
         System.out.println(licznik+"/"+mianownik);
@@ -29,8 +29,15 @@ public class zadanie1 {
 
 
     public static Ulamek skor(Ulamek ul3) {
-        int NWD = NWD(ul3.getLicznik(), ul3.getMianownik());
-        return new Ulamek(ul3.getLicznik()/NWD, ul3.getMianownik()/NWD);
+        if (ul3.getLicznik() > 0) {
+            int NWD = NWD(ul3.getLicznik(), ul3.getMianownik());
+            return new Ulamek(ul3.getLicznik()/NWD, ul3.getMianownik()/NWD);
+        }
+        else {
+            int NWD = NWD(ul3.getLicznik() * -1, ul3.getMianownik());
+            return new Ulamek(ul3.getLicznik()/NWD, ul3.getMianownik()/NWD);
+        }
+
     }
 
 
